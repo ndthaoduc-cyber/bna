@@ -2,68 +2,102 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Đăng nhập</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #f2f2f2;
+            background: linear-gradient(135deg, #4facfe, #00c6ff);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
+
         .box {
-            width: 320px;
-            margin: 120px auto;
-            padding: 20px;
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .login-box h2 {
+            padding: 30px;
+            width: 320px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             text-align: center;
         }
-        .login-box input {
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
             width: 100%;
             padding: 10px;
             margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
         }
-        .login-box button {
+
+        button {
             width: 100%;
             padding: 10px;
-            background: #4CAF50;
-            color: white;
+            margin-top: 10px;
+            background: #4facfe;
             border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
             cursor: pointer;
         }
-        .login-box button:hover {
-            background: #45a049;
+
+        button:hover {
+            background: #00c6ff;
         }
-        .error {
-            color: red;
-            text-align: center;
+
+        p {
+            margin-top: 15px;
+        }
+
+        a {
+            color: #4facfe;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
 
-<div class="login-box">
+<div class="box">
     <h2>Đăng nhập</h2>
+
     <input type="text" id="username" placeholder="Tên đăng nhập">
     <input type="password" id="password" placeholder="Mật khẩu">
+
     <button onclick="login()">Đăng nhập</button>
-    <p id="error" class="error"></p>
+
+    <p>Chưa có tài khoản? <a href="register.html">Đăng ký</a></p>
 </div>
 
 <script>
-    function login() {
-        var username = document.getElementById("username").value;
-        var password = document.getElementById("password").value;
+function login() {
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
 
-        // Tài khoản mẫu
-        if (username === "admin" && password === "123456") {
-            alert("Đăng nhập thành công!");
-        } else {
-            document.getElementById("error").innerText =
-                "Sai tên đăng nhập hoặc mật khẩu!";
-        }
+    if (user === "" || pass === "") {
+        alert("Vui lòng nhập đầy đủ thông tin!");
+        return;
     }
+
+    let accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+
+    let found = accounts.find(acc => acc.user === user && acc.pass === pass);
+
+    if (found) {
+        
+        localStorage.setItem("currentUser", user);
+
+       
+        window.location.href = "menu.html"; 
+        
+    } else {
+        alert("Sai tài khoản hoặc mật khẩu!");
+    }
+}
 </script>
 
 </body>

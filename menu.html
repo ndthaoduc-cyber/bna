@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop Bán Đèn</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ===== MENU ===== */
+        .menu {
+            background: #4facfe;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .menu h2 {
+            margin: 0;
+        }
+
+        .menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu ul li {
+            margin-left: 15px;
+        }
+
+        .menu ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 6px 12px;
+            border-radius: 20px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .menu ul li a:hover {
+            background: rgba(255,255,255,0.25);
+            transform: scale(1.05);
+        }
+
+        .menu ul li span {
+            font-weight: bold;
+        }
+
+        .logout {
+            background: #ff5252;
+            border: none;
+            padding: 8px 15px;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .logout:hover {
+            background: #ff1744;
+        }
+
+        /* ===== CONTENT ===== */
+        .content {
+            padding: 30px;
+        }
+
+        .content h2 {
+            margin-bottom: 20px;
+        }
+
+        .content h3 {
+            margin: 40px 0 20px;
+            padding: 10px 15px;
+            background: linear-gradient(45deg, #4facfe, #00c6ff);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        /* ===== PRODUCTS ===== */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 15px;
+            background: #ffffff;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .product {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(79,172,254,0.4);
+        }
+
+        .product img {
+            width: 100%;
+            height: 150px;
+            object-fit: contain;
+            transition: transform 0.3s, filter 0.3s;
+        }
+
+        .product:hover img {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 10px #4facfe);
+        }
+
+        .product h4 {
+            margin: 10px 0 5px;
+            color: #222;
+        }
+
+        .product p {
+            color: #ff5252;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .product button {
+            background: linear-gradient(45deg, #4facfe, #00c6ff);
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .product button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<!-- MENU -->
+<div class="menu">
+    <h2>💡 Shop Bán Đèn</h2>
+    <ul>
+        <li><a href="#den-trong-nha">Đèn trong nhà</a></li>
+        <li><a href="#den-trang-tri">Đèn trang trí</a></li>
+        <li><span id="user"></span></li>
+        <li><button class="logout" onclick="logout()">Đăng xuất</button></li>
+    </ul>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+    <h2>🛒 Danh sách sản phẩm</h2>
+
+    <!-- ĐÈN TRONG NHÀ -->
+    <h3 id="den-trong-nha">💡 Bán đèn trong nhà</h3>
+    <div class="products">
+        <div class="product">
+            <img src="https://cdn-icons-png.flaticon.com/512/3103/3103446.png">
+            <h4>Đèn LED</h4>
+            <p>Giá: 100.000đ</p>
+            <button>Mua</button>
+        </div>
+
+        <div class="product">
+            <img src="https://cdn-icons-png.flaticon.com/512/3103/3103451.png">
+            <h4>Đèn ngủ</h4>
+            <p>Giá: 150.000đ</p>
+            <button>Mua</button>
+        </div>
+    </div>
+
+    <!-- ĐÈN TRANG TRÍ -->
+    <h3 id="den-trang-tri">✨ Bán đèn trang trí</h3>
+    <div class="products">
+        <div class="product">
+            <img src="https://cdn-icons-png.flaticon.com/512/3103/3103442.png">
+            <h4>Đèn trang trí</h4>
+            <p>Giá: 200.000đ</p>
+            <button>Mua</button>
+        </div>
+
+        <div class="product">
+            <img src="https://cdn-icons-png.flaticon.com/512/3103/3103455.png">
+            <h4>Đèn dây LED</h4>
+            <p>Giá: 180.000đ</p>
+            <button>Mua</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let currentUser = localStorage.getItem("currentUser");
+
+    if (!currentUser) {
+        document.getElementById("user").innerText = "Khách";
+    } else {
+        document.getElementById("user").innerText = "Xin chào: " + currentUser;
+    }
+
+    function logout() {
+        localStorage.removeItem("currentUser");
+        alert("Đã đăng xuất!");
+    }
+</script>
+
+</body>
+</html>

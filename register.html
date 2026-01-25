@@ -6,91 +6,103 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #f2f2f2;
+            background: linear-gradient(135deg, #4facfe, #00c6ff);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        .register-box {
-            width: 320px;
-            margin: 80px auto;
-            padding: 20px;
+
+        .box {
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .register-box h2 {
+            padding: 30px;
+            width: 320px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             text-align: center;
         }
-        .register-box input {
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
             width: 100%;
             padding: 10px;
             margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
         }
-        .register-box button {
+
+        button {
             width: 100%;
             padding: 10px;
-            background: #2196F3;
-            color: white;
+            margin-top: 10px;
+            background: #4facfe;
             border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
             cursor: pointer;
         }
-        .register-box button:hover {
-            background: #1e88e5;
+
+        button:hover {
+            background: #00c6ff;
         }
-        .message {
-            text-align: center;
-            color: red;
+
+        p {
+            margin-top: 15px;
         }
-        .success {
-            color: green;
-        }
+
         a {
-            display: block;
-            text-align: center;
-            margin-top: 10px;
+            color: #4facfe;
             text-decoration: none;
         }
     </style>
 </head>
 <body>
 
-<div class="register-box">
+<div class="box">
     <h2>Đăng ký</h2>
 
     <input type="text" id="username" placeholder="Tên đăng nhập">
-    <input type="email" id="email" placeholder="Email">
     <input type="password" id="password" placeholder="Mật khẩu">
-    <input type="password" id="confirmPassword" placeholder="Nhập lại mật khẩu">
+    <input type="password" id="repassword" placeholder="Nhập lại mật khẩu">
 
     <button onclick="register()">Đăng ký</button>
 
-    <p id="message" class="message"></p>
-
-    <a href="login.html">Đã có tài khoản? Đăng nhập</a>
+    <p>Đã có tài khoản? <a href="login.html">Đăng nhập</a></p>
 </div>
 
 <script>
-    function register() {
-        var username = document.getElementById("username").value;
-        var email = document.getElementById("email").value;
-        var password = document.getElementById("password").value;
-        var confirmPassword = document.getElementById("confirmPassword").value;
-        var message = document.getElementById("message");
+function register() {
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+    let repass = document.getElementById("repassword").value;
 
-        if (username === "" || email === "" || password === "" || confirmPassword === "") {
-            message.innerText = "Vui lòng nhập đầy đủ thông tin!";
-            return;
-        }
-
-        if (password !== confirmPassword) {
-            message.innerText = "Mật khẩu không khớp!";
-            return;
-        }
-
-        message.classList.add("success");
-        message.innerText = "Đăng ký thành công!";
-        
-        // Ở đây bạn có thể lưu dữ liệu hoặc chuyển sang trang login
-        // window.location.href = "login.html";
+    if (user === "" || pass === "" || repass === "") {
+        alert("Vui lòng nhập đầy đủ thông tin!");
+        return;
     }
+
+    if (pass !== repass) {
+        alert("Mật khẩu nhập lại không khớp!");
+        return;
+    }
+
+    let accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+
+    if (accounts.find(acc => acc.user === user)) {
+        alert("Tài khoản đã tồn tại!");
+        return;
+    }
+
+    accounts.push({ user: user, pass: pass });
+    localStorage.setItem("accounts", JSON.stringify(accounts));
+
+    alert("Đăng ký thành công! Chuyển sang đăng nhập");
+    window.location.href = "login.html";
+}
 </script>
 
 </body>
