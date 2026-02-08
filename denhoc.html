@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đèn Học</title>
+    <link rel="stylesheet" href="css/denhoc.css">
+
+    <style>
+        .info {
+            display: none;
+            margin-top: 10px;
+            text-align: left;
+            font-size: 14px;
+            color: #333;
+        }
+
+        button {
+            margin: 5px;
+            padding: 6px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <h1>📚 Đèn Học</h1>
+    <a href="index.html">⬅ Quay lại</a>
+</div>
+
+<!-- DANH SÁCH SẢN PHẨM -->
+<div class="products">
+
+    <!-- Đèn học 1 -->
+    <div class="product">
+        <img src="https://catihome.com/san-pham/den-ban-hoc-nx16/" alt="Đèn lam viec">
+        <h3>Đèn học LED chống cận</h3>
+        <p class="price">150.000đ</p>
+
+        <button>Mua ngay</button>
+        <button onclick="toggleInfo('hoc1')">Xem thêm</button>
+
+        <div class="info" id="hoc1">
+            <p><b>Công dụng:</b> Chiếu sáng khi học tập, đọc sách.</p>
+            <p><b>Lợi ích:</b> Ánh sáng ổn định, giảm mỏi mắt, tiết kiệm điện.</p>
+        </div>
+    </div>
+
+    <!-- Đèn học 2 -->
+    <div class="product">
+        <img src="img/denhoc2.jpg" alt="Đèn hoc">
+        <h3>Đèn học để bàn cảm ứng</h3>
+        <p class="price">220.000đ</p>
+
+        <button>Mua ngay</button>
+        <button onclick="toggleInfo('hoc2')">Xem thêm</button>
+
+        <div class="info" id="hoc2">
+            <p><b>Công dụng:</b> Điều chỉnh bật/tắt và độ sáng bằng cảm ứng.</p>
+            <p><b>Lợi ích:</b> Hiện đại, tiện lợi, dễ sử dụng.</p>
+        </div>
+    </div>
+
+    <!-- Đèn học 3 -->
+    <div class="product">
+        <img src="img/denhoc3.jpg" alt="Đèn ">
+        <h3>Đèn học gập thông minh</h3>
+        <p class="price">180.000đ</p>
+
+        <button>Mua ngay</button>
+        <button onclick="toggleInfo('hoc3')">Xem thêm</button>
+
+        <div class="info" id="hoc3">
+            <p><b>Công dụng:</b> Chiếu sáng linh hoạt với nhiều góc gập.</p>
+            <p><b>Lợi ích:</b> Gọn nhẹ, dễ mang theo, tiết kiệm diện tích.</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- JAVASCRIPT -->
+<script>
+function toggleInfo(id) {
+    var info = document.getElementById(id);
+    if (info.style.display === "none" || info.style.display === "") {
+        info.style.display = "block";
+    } else {
+        info.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>

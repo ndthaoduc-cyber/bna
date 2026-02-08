@@ -2,100 +2,89 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Đăng nhập</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #4facfe, #00c6ff);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .box {
-            background: white;
-            padding: 30px;
-            width: 320px;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            text-align: center;
-        }
-
-        h2 {
-            margin-bottom: 20px;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            background: #4facfe;
-            border: none;
-            color: white;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #00c6ff;
-        }
-
-        p {
-            margin-top: 15px;
-        }
-
-        a {
-            color: #4facfe;
-            text-decoration: none;
-        }
-    </style>
+    <title>Login</title>
+    <link rel="stylesheet" href="css/loginvaregister.css">
 </head>
 <body>
 
-<div class="box">
+<!-- LOGIN -->
+<div class="login-box" id="loginBox">
     <h2>Đăng nhập</h2>
-
-    <input type="text" id="username" placeholder="Tên đăng nhập">
-    <input type="password" id="password" placeholder="Mật khẩu">
-
+    <input type="text" id="loginUsername" placeholder="Tên đăng nhập">
+    <input type="password" id="loginPassword" placeholder="Mật khẩu">
     <button onclick="login()">Đăng nhập</button>
+    <p id="loginError" class="error"></p>
+    <p>
+        Chưa có tài khoản?
+        <a href="#" onclick="showRegister()">Đăng ký</a>
+    </p>
+</div>
 
-    <p>Chưa có tài khoản? <a href="register.html">Đăng ký</a></p>
+<!-- REGISTER -->
+<div class="login-box" id="registerBox" style="display:none;">
+    <h2>Đăng ký</h2>
+    <input type="text" id="registerUsername" placeholder="Tên đăng nhập">
+    <input type="password" id="registerPassword" placeholder="Mật khẩu">
+    <button onclick="register()">Đăng ký</button>
+    <p id="registerError" class="error"></p>
+    <p>
+        Đã có tài khoản?
+        <a href="#" onclick="showLogin()">Đăng nhập</a>
+    </p>
 </div>
 
 <script>
-function login() {
-    let user = document.getElementById("username").value;
-    let pass = document.getElementById("password").value;
+// HIỂN THỊ FORM
+function showRegister() {
+    document.getElementById("loginBox").style.display = "none";
+    document.getElementById("registerBox").style.display = "block";
+}
 
-    if (user === "" || pass === "") {
-        alert("Vui lòng nhập đầy đủ thông tin!");
+function showLogin() {
+    document.getElementById("registerBox").style.display = "none";
+    document.getElementById("loginBox").style.display = "block";
+}
+
+// ĐĂNG KÝ
+function register() {
+    var username = document.getElementById("registerUsername").value;
+    var password = document.getElementById("registerPassword").value;
+
+    if (username === "" || password === "") {
+        document.getElementById("registerError").innerText =
+            "Vui lòng nhập đầy đủ thông tin!";
         return;
     }
 
-    let accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+    // Lưu tài khoản
+    localStorage.setItem("username", username);
+    localStorage.setItem("password", password);
 
-    let found = accounts.find(acc => acc.user === user && acc.pass === pass);
+    alert("Đăng ký thành công! Vui lòng đăng nhập.");
 
-    if (found) {
-        
-        localStorage.setItem("currentUser", user);
+    // Quay về đăng nhập
+    showLogin();
 
-       
-        window.location.href = "menu.html"; 
-        
+    // TỰ ĐỘNG ĐIỀN TK VỪA ĐĂNG KÝ
+    document.getElementById("loginUsername").value = username;
+    document.getElementById("loginPassword").value = password;
+}
+
+// ĐĂNG NHẬP
+function login() {
+    var username = document.getElementById("loginUsername").value;
+    var password = document.getElementById("loginPassword").value;
+
+    var savedUser = localStorage.getItem("username");
+    var savedPass = localStorage.getItem("password");
+
+    if (username === savedUser && password === savedPass) {
+        alert("Đăng nhập thành công!");
+        localStorage.setItem("currentUser", username);
+        window.location.href = "index.html";
     } else {
-        alert("Sai tài khoản hoặc mật khẩu!");
+        document.getElementById("loginError").innerText =
+            "Sai tên đăng nhập hoặc mật khẩu!";
     }
 }
 </script>

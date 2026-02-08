@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop Bán Đèn</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+
+<!-- MENU -->
+<div class="menu">
+    <h2>💡 Shop Bán Đèn</h2>
+    <div class="right">
+        <span id="user">Khách</span>
+        <a href="login.html" id="loginBtn">Đăng nhập</a>
+        <button id="logoutBtn" onclick="logout()" style="display:none;">
+            Đăng xuất
+        </button>
+    </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+    <div class="category">
+        <h3>🌙 Đèn ngủ</h3>
+        <p>Các loại đèn ngủ đẹp – giá rẻ</p>
+        <a class="view" href="denngu.html">Xem</a>
+    </div>
+
+    <div class="category">
+        <h3>✨ Đèn trang trí</h3>
+        <p>Đèn decor phòng, quán, sự kiện</p>
+        <a class="view" href="dentrangthi.html">Xem</a>
+    </div>
+
+    <!-- PHẦN THÊM -->
+    <div class="category">
+        <h3>📚 Đèn học</h3>
+        <p>Đèn học chống cận – bảo vệ mắt</p>
+        <a class="view" href="denhoc.html">Xem</a>
+    </div>
+
+</div>
+
+<script>
+let currentUser = localStorage.getItem("currentUser");
+
+if (currentUser) {
+    document.getElementById("user").innerText = currentUser;
+    document.getElementById("loginBtn").style.display = "none";
+    document.getElementById("logoutBtn").style.display = "inline-block";
+}
+
+function logout() {
+    localStorage.removeItem("currentUser");
+    alert("Đã đăng xuất!");
+    location.reload();
+}
+</script>
+
+</body>
+</html>
+

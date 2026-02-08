@@ -1,0 +1,102 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* BOX CHÍNH */
+.login-box {
+    background: #ffffff;
+    width: 340px;
+    padding: 30px 25px;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    animation: fadeIn 0.6s ease;
+}
+
+/* HIỆU ỨNG VÀO */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* INPUT */
+input {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 2px rgba(102,126,234,0.2);
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* LINK */
+p {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ERROR / MESSAGE */
+.error {
+    color: #e74c3c;
+    text-align: center;
+    font-size: 13px;
+    margin-top: 8px;
+}

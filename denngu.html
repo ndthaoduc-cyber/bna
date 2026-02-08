@@ -2,134 +2,94 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Bán Đèn Ngủ Thông Minh</title>
+    <title>Đèn Ngủ</title>
+    <link rel="stylesheet" href="css/denhoc.css">
 
     <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f2f2f2;
-        }
-
-        /* MENU */
-        .menu {
-            background: #6a5acd;
-            padding: 15px 30px;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .menu a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        h2 {
-            margin: 0;
-        }
-
-        /* PRODUCTS */
-        .products {
-            display: flex;
-            justify-content: center;
-            padding: 40px;
-        }
-
-        .product {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            width: 320px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-            transition: transform 0.3s;
-        }
-
-        .product:hover {
-            transform: translateY(-8px);
-        }
-
-        .product img {
-            width: 100%;
-            height: 200px;
-            object-fit: contain;
-        }
-
-        .product span {
-            display: block;
+        /* Ẩn phần xem thêm ban đầu */
+        .info {
+            display: none;
+            margin-top: 10px;
+            text-align: left;
             font-size: 14px;
-            color: #555;
-            margin: 12px 0;
-            line-height: 1.5;
-        }
-
-        .product p {
-            color: #ff5252;
-            font-weight: bold;
-            font-size: 18px;
+            color: #333;
         }
 
         button {
-            background: #6a5acd;
-            color: white;
-            border: none;
-            padding: 10px 22px;
-            border-radius: 25px;
+            margin: 5px;
+            padding: 6px 10px;
             cursor: pointer;
-            font-size: 15px;
-        }
-
-        button:hover {
-            opacity: 0.85;
-        }
-
-        /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 15px;
-            background: #ddd;
-            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
-<!-- MENU -->
-<div class="menu">
-    <a href="#">⬅ Trang chủ</a>
-    <h2>🌙 Đèn Ngủ Thông Minh</h2>
+<!-- HEADER -->
+<div class="header">
+    <h1>🌙 Đèn Ngủ</h1>
+    <a href="index.html">⬅ Quay lại</a>
 </div>
 
-<!-- PRODUCT -->
+<!-- DANH SÁCH SẢN PHẨM -->
 <div class="products">
+
+    <!-- Đèn 1 -->
     <div class="product">
-        <img src="https://websosanh.vn/images/products/2019/05/den-ngu-3d-trai-tim.jpg">
-        <h3>Đèn ngủ LED 3D cảm ứng ánh sáng</h3>
+        <img src="https://cdn-icons-png.flaticon.com/512/3103/3103451.png" alt="">
+        <h3>Đèn ngủ để bàn</h3>
+        <p class="price">150.000đ</p>
 
-        <span>
-            Đèn ngủ thông minh kết hợp công nghệ LED 3D tạo hiệu ứng chiều sâu
-            đẹp mắt cùng cảm biến ánh sáng tự động. Đèn tự bật khi trời tối,
-            tự tắt khi đủ sáng. Ánh sáng dịu nhẹ, tiết kiệm điện, an toàn cho mắt.
-            Phù hợp phòng ngủ, phòng cưới và trẻ em.
-        </span>
+        <button>Mua ngay</button>
+        <button onclick="toggleInfo('den1')">Xem thêm</button>
 
-        <p>199.000đ</p>
-        <button onclick="mua()">Mua ngay</button>
+        <div class="info" id="den1">
+            <p><b>Công dụng:</b> Chiếu sáng nhẹ vào ban đêm, phù hợp đọc sách.</p>
+            <p><b>Lợi ích:</b> Ánh sáng dịu mắt, tiết kiệm điện, dễ di chuyển.</p>
+        </div>
     </div>
-</div>
 
-<!-- FOOTER -->
-<footer>
-</footer>
+    <!-- Đèn 2 -->
+    <div class="product">
+        <img src="https://cdn-icons-png.flaticon.com/512/3103/3103446.png" alt="">
+        <h3>Đèn ngủ LED</h3>
+        <p class="price">120.000đ</p>
+
+        <button>Mua ngay</button>
+        <button onclick="toggleInfo('den2')">Xem thêm</button>
+
+        <div class="info" id="den2">
+            <p><b>Công dụng:</b> Chiếu sáng ban đêm với ánh sáng ổn định.</p>
+            <p><b>Lợi ích:</b> Tuổi thọ cao, tiết kiệm điện, an toàn cho mắt.</p>
+        </div>
+    </div>
+
+    <!-- Đèn 3 -->
+    <div class="product">
+        <img src="https://cdn-icons-png.flaticon.com/512/3103/3103457.png" alt="">
+        <h3>Đèn ngủ cảm ứng</h3>
+        <p class="price">180.000đ</p>
+
+        <button>Mua ngay</button>
+        <button onclick="toggleInfo('den3')">Xem thêm</button>
+
+        <div class="info" id="den3">
+            <p><b>Công dụng:</b> Bật/tắt đèn chỉ bằng một chạm.</p>
+            <p><b>Lợi ích:</b> Hiện đại, tiện lợi, an toàn cho trẻ em.</p>
+        </div>
+    </div>
+
+</div>
 
 <!-- JAVASCRIPT -->
 <script>
-    function mua() {
-        alert("🎉 Bạn đã chọn mua Đèn ngủ LED 3D cảm ứng ánh sáng!");
+function toggleInfo(id) {
+    var info = document.getElementById(id);
+    if (info.style.display === "none" || info.style.display === "") {
+        info.style.display = "block";
+    } else {
+        info.style.display = "none";
     }
+}
 </script>
 
 </body>
