@@ -50,9 +50,18 @@ function register() {
     var username = document.getElementById("registerUsername").value;
     var password = document.getElementById("registerPassword").value;
 
+    var savedUser = localStorage.getItem("username");
+
     if (username === "" || password === "") {
         document.getElementById("registerError").innerText =
             "Vui lòng nhập đầy đủ thông tin!";
+        return;
+    }
+
+    // KIỂM TRA TÀI KHOẢN ĐÃ TỒN TẠI
+    if (savedUser === username) {
+        document.getElementById("registerError").innerText =
+            "Tài khoản đã tồn tại!";
         return;
     }
 
@@ -62,10 +71,8 @@ function register() {
 
     alert("Đăng ký thành công! Vui lòng đăng nhập.");
 
-    // Quay về đăng nhập
     showLogin();
 
-    // TỰ ĐỘNG ĐIỀN TK VỪA ĐĂNG KÝ
     document.getElementById("loginUsername").value = username;
     document.getElementById("loginPassword").value = password;
 }
