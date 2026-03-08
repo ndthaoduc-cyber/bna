@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="css/loginvaregister.css">
+<meta charset="UTF-8">
+<title>Login / Register</title>
+
+<link rel="stylesheet" href="css/loginvaregister.css">
+
 </head>
+
 <body>
 
 <!-- LOGIN -->
 <div class="login-box" id="loginBox">
     <h2>Đăng nhập</h2>
-    <input type="text" id="loginUsername" placeholder="Tên đăng nhập">
-    <input type="password" id="loginPassword" placeholder="Mật khẩu">
+
+    <input type="text" id="loginUsername" placeholder="Tên đăng nhập" autocomplete="off">
+    <input type="password" id="loginPassword" placeholder="Mật khẩu" autocomplete="new-password">
+
     <button onclick="login()">Đăng nhập</button>
-    <p id="loginError" class="error"></p>
-    <p>
-        Chưa có tài khoản?
+
+    <p id="loginMsg"></p>
+
+    <p>Chưa có tài khoản?
         <a href="#" onclick="showRegister()">Đăng ký</a>
     </p>
 </div>
@@ -23,78 +29,20 @@
 <!-- REGISTER -->
 <div class="login-box" id="registerBox" style="display:none;">
     <h2>Đăng ký</h2>
-    <input type="text" id="registerUsername" placeholder="Tên đăng nhập">
-    <input type="password" id="registerPassword" placeholder="Mật khẩu">
+
+    <input type="text" id="registerUsername" placeholder="Tên đăng nhập" autocomplete="off">
+    <input type="password" id="registerPassword" placeholder="Mật khẩu" autocomplete="new-password">
+
     <button onclick="register()">Đăng ký</button>
-    <p id="registerError" class="error"></p>
-    <p>
-        Đã có tài khoản?
+
+    <p id="registerMsg"></p>
+
+    <p>Đã có tài khoản?
         <a href="#" onclick="showLogin()">Đăng nhập</a>
     </p>
 </div>
 
-<script>
-// HIỂN THỊ FORM
-function showRegister() {
-    document.getElementById("loginBox").style.display = "none";
-    document.getElementById("registerBox").style.display = "block";
-}
-
-function showLogin() {
-    document.getElementById("registerBox").style.display = "none";
-    document.getElementById("loginBox").style.display = "block";
-}
-
-// ĐĂNG KÝ
-function register() {
-    var username = document.getElementById("registerUsername").value;
-    var password = document.getElementById("registerPassword").value;
-
-    var savedUser = localStorage.getItem("username");
-
-    if (username === "" || password === "") {
-        document.getElementById("registerError").innerText =
-            "Vui lòng nhập đầy đủ thông tin!";
-        return;
-    }
-
-    // KIỂM TRA TÀI KHOẢN ĐÃ TỒN TẠI
-    if (savedUser === username) {
-        document.getElementById("registerError").innerText =
-            "Tài khoản đã tồn tại!";
-        return;
-    }
-
-    // Lưu tài khoản
-    localStorage.setItem("username", username);
-    localStorage.setItem("password", password);
-
-    alert("Đăng ký thành công! Vui lòng đăng nhập.");
-
-    showLogin();
-
-    document.getElementById("loginUsername").value = username;
-    document.getElementById("loginPassword").value = password;
-}
-
-// ĐĂNG NHẬP
-function login() {
-    var username = document.getElementById("loginUsername").value;
-    var password = document.getElementById("loginPassword").value;
-
-    var savedUser = localStorage.getItem("username");
-    var savedPass = localStorage.getItem("password");
-
-    if (username === savedUser && password === savedPass) {
-        alert("Đăng nhập thành công!");
-        localStorage.setItem("currentUser", username);
-        window.location.href = "index.html";
-    } else {
-        document.getElementById("loginError").innerText =
-            "Sai tên đăng nhập hoặc mật khẩu!";
-    }
-}
-</script>
+<script src="js/login.js"></script>
 
 </body>
 </html>

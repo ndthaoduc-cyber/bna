@@ -1,0 +1,49 @@
+/* ===== SẢN PHẨM ĐỀ XUẤT ===== */
+
+.suggest{
+    text-align: center;
+    margin-top: -80px;   /* dịch lên gần khung trắng */
+    margin-bottom: 40px;
+}
+
+.product-list{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.product{
+    background: white;
+    padding: 15px;
+    width: 180px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.product img{
+    width: 100%;
+}
+
+.product h3{
+    margin: 10px 0 5px;
+}
+
+.product p{
+    color: #ff6600;
+    font-weight: bold;
+}
+
+.product button{
+    margin-top: 8px;
+    padding: 6px 12px;
+    background: #ff9800;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.product button:hover{
+    background: #e68900;
+}

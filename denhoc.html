@@ -1,95 +1,79 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <title>Đèn Học</title>
-    <link rel="stylesheet" href="css/denhoc.css">
-
-    <style>
-        .info {
-            display: none;
-            margin-top: 10px;
-            text-align: left;
-            font-size: 14px;
-            color: #333;
-        }
-
-        button {
-            margin: 5px;
-            padding: 6px 10px;
-            cursor: pointer;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Đèn Học</title>
+<link rel="stylesheet" href="css/l.css">
 </head>
+
 <body>
 
 <!-- HEADER -->
 <div class="header">
-    <h1>📚 Đèn Học</h1>
-    <a href="index.html">⬅ Quay lại</a>
+    <div class="logo">💡 Shop Bán Đèn</div>
+    <div class="nav">
+        <a href="index.html">Trang chủ</a>
+        <a href="denngu.html">Đèn ngủ</a>
+        <a href="dentrangthi.html">Đèn trang trí</a>
+        <a href="denhoc.html">Đèn học</a>
+        <a href="giohang.html">Giỏ hàng 🛒 (<span id="cartCount">0</span>)</a>
+    </div>
 </div>
 
-<!-- DANH SÁCH SẢN PHẨM -->
+<!-- PRODUCTS -->
 <div class="products">
 
-    <!-- Đèn học 1 -->
-    <div class="product">
-        <img src="https://catihome.com/san-pham/den-ban-hoc-nx16/" alt="Đèn lam viec">
-        <h3>Đèn học LED chống cận</h3>
-        <p class="price">150.000đ</p>
+<!-- SẢN PHẨM 1 -->
+<div class="product">
+<img src="https://thudoden.vn/wp-content/uploads/2022/10/den-ban-hien-dai-768-thu-do-den-7.jpg">
+<h3>Đèn học LED chống cận</h3>
+<p>150.000đ</p>
 
-        <button>Mua ngay</button>
-        <button onclick="toggleInfo('hoc1')">Xem thêm</button>
+<button onclick="buyNow('msg1')">Mua ngay</button>
+<button onclick="addToCart('Đèn học LED chống cận',150000)">Thêm vào giỏ hàng</button>
+<button onclick="window.location.href='denhoc1.html'">Xem thêm</button>
 
-        <div class="info" id="hoc1">
-            <p><b>Công dụng:</b> Chiếu sáng khi học tập, đọc sách.</p>
-            <p><b>Lợi ích:</b> Ánh sáng ổn định, giảm mỏi mắt, tiết kiệm điện.</p>
-        </div>
-    </div>
+<p id="msg1" style="color:green; display:none; font-weight:bold;">
+✔ Mua thành công
+</p>
+</div>
 
-    <!-- Đèn học 2 -->
-    <div class="product">
-        <img src="img/denhoc2.jpg" alt="Đèn hoc">
-        <h3>Đèn học để bàn cảm ứng</h3>
-        <p class="price">220.000đ</p>
 
-        <button>Mua ngay</button>
-        <button onclick="toggleInfo('hoc2')">Xem thêm</button>
+<!-- SẢN PHẨM 2 -->
+<div class="product">
+<img src="https://hpkoala.com/wp-content/uploads/2016/02/33_shop1_197145.jpg">
+<h3>Đèn học cảm ứng</h3>
+<p>220.000đ</p>
 
-        <div class="info" id="hoc2">
-            <p><b>Công dụng:</b> Điều chỉnh bật/tắt và độ sáng bằng cảm ứng.</p>
-            <p><b>Lợi ích:</b> Hiện đại, tiện lợi, dễ sử dụng.</p>
-        </div>
-    </div>
+<button onclick="buyNow('msg2')">Mua ngay</button>
+<button onclick="addToCart('Đèn học cảm ứng',220000)">Thêm vào giỏ hàng</button>
+<button onclick="window.location.href='denhoc2.html'">Xem thêm</button>
 
-    <!-- Đèn học 3 -->
-    <div class="product">
-        <img src="img/denhoc3.jpg" alt="Đèn ">
-        <h3>Đèn học gập thông minh</h3>
-        <p class="price">180.000đ</p>
+<p id="msg2" style="color:green; display:none; font-weight:bold;">
+✔ Mua thành công
+</p>
+</div>
 
-        <button>Mua ngay</button>
-        <button onclick="toggleInfo('hoc3')">Xem thêm</button>
 
-        <div class="info" id="hoc3">
-            <p><b>Công dụng:</b> Chiếu sáng linh hoạt với nhiều góc gập.</p>
-            <p><b>Lợi ích:</b> Gọn nhẹ, dễ mang theo, tiết kiệm diện tích.</p>
-        </div>
-    </div>
+<!-- SẢN PHẨM 3 -->
+<div class="product">
+<img src="https://netphukien.com/wp-content/uploads/den-chong-can-taotronics-ttdl056-den-hoc-chong-can-05-768x768.png">
+<h3>Đèn học gập thông minh</h3>
+<p>180.000đ</p>
+
+<button onclick="buyNow('msg3')">Mua ngay</button>
+<button onclick="addToCart('Đèn học gập thông minh',180000)">Thêm vào giỏ hàng</button>
+<button onclick="window.location.href='denhoc3.html'">Xem thêm</button>
+
+<p id="msg3" style="color:green; display:none; font-weight:bold;">
+✔ Mua thành công
+</p>
+</div>
 
 </div>
 
-<!-- JAVASCRIPT -->
-<script>
-function toggleInfo(id) {
-    var info = document.getElementById(id);
-    if (info.style.display === "none" || info.style.display === "") {
-        info.style.display = "block";
-    } else {
-        info.style.display = "none";
-    }
-}
-</script>
+<!-- LINK FILE JS -->
+<script src="js/denhoc.js"></script>
 
 </body>
 </html>

@@ -1,96 +1,79 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <title>Đèn Ngủ</title>
-    <link rel="stylesheet" href="css/denhoc.css">
-
-    <style>
-        /* Ẩn phần xem thêm ban đầu */
-        .info {
-            display: none;
-            margin-top: 10px;
-            text-align: left;
-            font-size: 14px;
-            color: #333;
-        }
-
-        button {
-            margin: 5px;
-            padding: 6px 10px;
-            cursor: pointer;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Đèn Ngủ</title>
+<link rel="stylesheet" href="css/l.css">
 </head>
+
 <body>
 
 <!-- HEADER -->
 <div class="header">
-    <h1>🌙 Đèn Ngủ</h1>
-    <a href="index.html">⬅ Quay lại</a>
+    <div class="logo">💡 Shop Bán Đèn</div>
+    <div class="nav">
+        <a href="index.html">Trang chủ</a>
+        <a href="denngu.html">Đèn ngủ</a>
+        <a href="dentrangthi.html">Đèn trang trí</a>
+        <a href="denhoc.html">Đèn học</a>
+        <a href="cart.html">Giỏ hàng 🛒 (<span id="cartCount">0</span>)</a>
+    </div>
 </div>
 
-<!-- DANH SÁCH SẢN PHẨM -->
+<!-- PRODUCTS -->
 <div class="products">
 
-    <!-- Đèn 1 -->
-    <div class="product">
-        <img src="https://cdn-icons-png.flaticon.com/512/3103/3103451.png" alt="">
-        <h3>Đèn ngủ để bàn</h3>
-        <p class="price">150.000đ</p>
+<!-- SẢN PHẨM 1 -->
+<div class="product">
+<img src="https://tamnguyenshop.com/Upload/Den-led-trang-tri/nha-thuy-tinh-den-led-dom-dom%20(9).JPG">
+<h3>Đèn ngủ LED</h3>
+<p>120.000đ</p>
 
-        <button>Mua ngay</button>
-        <button onclick="toggleInfo('den1')">Xem thêm</button>
+<button onclick="buyNow('msg1')">Mua ngay</button>
+<button onclick="addToCart('Đèn ngủ LED',120000)">Thêm vào giỏ hàng</button>
+<button onclick="window.location.href='denngu1.html'">Xem thêm</button>
 
-        <div class="info" id="den1">
-            <p><b>Công dụng:</b> Chiếu sáng nhẹ vào ban đêm, phù hợp đọc sách.</p>
-            <p><b>Lợi ích:</b> Ánh sáng dịu mắt, tiết kiệm điện, dễ di chuyển.</p>
-        </div>
-    </div>
+<p id="msg1" style="color:green; display:none; font-weight:bold;">
+✔ Mua thành công
+</p>
+</div>
 
-    <!-- Đèn 2 -->
-    <div class="product">
-        <img src="https://cdn-icons-png.flaticon.com/512/3103/3103446.png" alt="">
-        <h3>Đèn ngủ LED</h3>
-        <p class="price">120.000đ</p>
 
-        <button>Mua ngay</button>
-        <button onclick="toggleInfo('den2')">Xem thêm</button>
+<!-- SẢN PHẨM 2 -->
+<div class="product">
+<img src="https://denngu.vn/uploads/thumb/dn004.jpg">
+<h3>Đèn ngủ cảm ứng</h3>
+<p>180.000đ</p>
 
-        <div class="info" id="den2">
-            <p><b>Công dụng:</b> Chiếu sáng ban đêm với ánh sáng ổn định.</p>
-            <p><b>Lợi ích:</b> Tuổi thọ cao, tiết kiệm điện, an toàn cho mắt.</p>
-        </div>
-    </div>
+<button onclick="buyNow('msg2')">Mua ngay</button>
+<button onclick="addToCart('Đèn ngủ cảm ứng',180000)">Thêm vào giỏ hàng</button>
+<button onclick="window.location.href='denngu2.html'">Xem thêm</button>
 
-    <!-- Đèn 3 -->
-    <div class="product">
-        <img src="https://cdn-icons-png.flaticon.com/512/3103/3103457.png" alt="">
-        <h3>Đèn ngủ cảm ứng</h3>
-        <p class="price">180.000đ</p>
+<p id="msg2" style="color:green; display:none; font-weight:bold;">
+✔ Mua thành công
+</p>
+</div>
 
-        <button>Mua ngay</button>
-        <button onclick="toggleInfo('den3')">Xem thêm</button>
 
-        <div class="info" id="den3">
-            <p><b>Công dụng:</b> Bật/tắt đèn chỉ bằng một chạm.</p>
-            <p><b>Lợi ích:</b> Hiện đại, tiện lợi, an toàn cho trẻ em.</p>
-        </div>
-    </div>
+<!-- SẢN PHẨM 3 -->
+<div class="product">
+<img src="https://tse3.mm.bing.net/th/id/OIP.8NMmbVo4nyI2icSd_KNRowHaHa?rs=1&pid=ImgDetMain&o=7&rm=3">
+<h3>Đèn ngủ trang trí</h3>
+<p>367.000đ</p>
+
+<button onclick="buyNow('msg3')">Mua ngay</button>
+<button onclick="addToCart('Đèn trang trí bàn',200000)">Thêm vào giỏ hàng</button>
+<button onclick="window.location.href='denngu3.html'">Xem thêm</button>
+
+<p id="msg3" style="color:green; display:none; font-weight:bold;">
+✔ Mua thành công
+</p>
+</div>
 
 </div>
 
-<!-- JAVASCRIPT -->
-<script>
-function toggleInfo(id) {
-    var info = document.getElementById(id);
-    if (info.style.display === "none" || info.style.display === "") {
-        info.style.display = "block";
-    } else {
-        info.style.display = "none";
-    }
-}
-</script>
+<!-- LINK FILE JS -->
+<script src="js/denngu.js"></script>
 
 </body>
 </html>

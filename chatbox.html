@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Chat với Shop</title>
+
+<link rel="stylesheet" href="css/chatbox.css">
+</head>
+
+<body>
+
+<!-- NÚT MỞ CHAT -->
+<button id="chatToggle" onclick="toggleChat()">💬 Chat với Shop</button>
+
+<!-- KHUNG CHAT -->
+<div id="chatBox">
+
+<div id="chatHeader">
+Hỗ trợ khách hàng
+</div>
+
+<div id="chatMessages"></div>
+
+<div id="chatInput">
+<input type="text" id="userMessage" placeholder="Nhập câu hỏi...">
+<button onclick="sendMessage()">Gửi</button>
+</div>
+
+</div>
+
+<script src="js/chatboxvagiohang.js"></script>
+
+</body>
+</html>
