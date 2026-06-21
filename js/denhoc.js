@@ -69,7 +69,7 @@ function loadProductsFromSubcollection(subName, containerId) {
                   <img src="${imageUrl}" alt="${productName}">
                   <h3>${productName}</h3>
 
-                  <p class="old-price">${oldPrice.toLocaleString()}đ</p>
+                  <p class="Old price">${oldPrice.toLocaleString()}đ</p>
                   <p class="price">${price.toLocaleString()}đ</p>
 
                   <button class="detail-btn">Xem chi tiết</button>

@@ -1,4 +1,5 @@
-// ================= FIREBASE =================
+// ================== 1. FIREBASE CONFIG & INIT ==================
+// ================== 1. FIREBASE CONFIG ==================
 const firebaseConfig = {
     apiKey: "AIzaSyBW5pIwGuxrNu13fyGMM4whmQ24evO0CyM",
     authDomain: "lllllll-3452e.firebaseapp.com",
@@ -10,154 +11,82 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-
 const db = firebase.firestore();
 
 let cart = [];
 
-// ================= LOAD PRODUCTS =================
-function loadProducts() {
+// ================== 2. HÀM LOAD SẢN PHẨM ==================
+/**
+ * @param {string} collectionName - Tên Collection trên Firebase (vd: "denhoc")
+ * @param {string} containerId - ID của thẻ HTML hiển thị sản phẩm
+ */
+function loadProducts(collectionName, containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
 
-    const container = document.getElementById("productContainer");
+    container.innerHTML = "<p>Đang tải dữ liệu...</p>";
 
-    if (!container) {
-        console.error("Không tìm thấy productContainer");
-        return;
-    }
-
-    db.collection("light3")
-        .get()
+    // Truy vấn trực tiếp vào collection vì cấu trúc bạn không có subcollection
+    db.collection(collectionName).get()
         .then((querySnapshot) => {
-
-            container.innerHTML = "";
+            container.innerHTML = ""; 
 
             if (querySnapshot.empty) {
-                container.innerHTML = "<h2>Không có sản phẩm nào</h2>";
+                container.innerHTML = `<p>Chưa có sản phẩm nào trong mục này.</p>`;
                 return;
             }
 
             querySnapshot.forEach((doc) => {
-
                 const p = doc.data();
+                const productName = p.name || doc.id;
+                const oldPrice = Number(p.oldPrice) || 0;
+                const price = Number(p.price) || 0;
+                const imageUrl = p.image || 'https://via.placeholder.com/250';
 
-                const productName =
-                    p.dentrangthi001 ||
-                    p.dentrangthi002 ||
-                    p.dentrangthi003 ||
-                    "Sản phẩm";
+                const productDiv = document.createElement("div");
+                productDiv.className = "product";
 
-                const oldPrice = Number(
-                    String(p["Old Price"] || "0")
-                        .replace(/[^\d]/g, "")
-                );
-
-                const newPrice = Number(
-                    String(p["New Price"] || "0")
-                        .replace(/[^\d]/g, "")
-                );
-
-                const productHTML = `
-                    <div class="product">
-
-                        <img src="${p.image || ''}" 
-                             alt="${productName}">
-
-                        <h3>${productName}</h3>
-
-                        <p class="old-price">
-                            ${oldPrice.toLocaleString()}đ
-                        </p>
-
-                        <p class="price">
-                            ${newPrice.toLocaleString()}đ
-                        </p>
-
-                        <button class="detail-btn"
-                            onclick="viewDetail('${doc.id}')">
-                            Xem chi tiết
-                        </button>
-
-                        <button class="add-btn"
-                            onclick="addToCart(
-                                '${productName}',
-                                ${newPrice}
-                            )">
-                            Thêm vào giỏ
-                        </button>
-
-                    </div>
+                productDiv.innerHTML = `
+                    <img src="${imageUrl}" alt="${productName}" style="width:100px;">
+                    <h3>${productName}</h3>
+                    <p class="old-price"><s>${oldPrice.toLocaleString()}đ</s></p>
+                    <p class="price">${price.toLocaleString()}đ</p>
+                    <button class="add-btn">Thêm vào giỏ</button>
                 `;
 
-                container.innerHTML += productHTML;
-            });
+                productDiv.querySelector(".add-btn").addEventListener("click", () => {
+                    addToCart(productName, price);
+                });
 
-            console.log("Tải sản phẩm thành công!");
+                container.appendChild(productDiv);
+            });
         })
         .catch((error) => {
-
-            console.error("Firestore Error:", error);
-
-            container.innerHTML = `
-                <h2 style="color:red">
-                    Không thể tải dữ liệu Firestore
-                </h2>
-            `;
+            console.error("Lỗi tải dữ liệu:", error);
+            container.innerHTML = "<p>Lỗi kết nối database.</p>";
         });
 }
 
-// ================= CHI TIẾT =================
-function viewDetail(id) {
-    window.location.href = `detail.html?id=${id}`;
-}
-
-// ================= GIỎ HÀNG =================
+// ================== 3. GIỎ HÀNG ==================
 function addToCart(name, price) {
-
-    cart = JSON.parse(
-        localStorage.getItem("cart")
-    ) || [];
-
-    cart.push({
-        name,
-        price
-    });
-
-    localStorage.setItem(
-        "cart",
-        JSON.stringify(cart)
-    );
-
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push({ name, price });
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(`Đã thêm "${name}" vào giỏ hàng!`);
     updateCartCount();
-
-    alert("Đã thêm vào giỏ hàng!");
 }
 
-// ================= ĐẾM GIỎ =================
 function updateCartCount() {
-
-    const countEl =
-        document.getElementById("cartCount");
-
-    if (!countEl) return;
-
-    cart = JSON.parse(
-        localStorage.getItem("cart")
-    ) || [];
-
-    countEl.textContent = cart.length;
+    const countEl = document.getElementById("cartCount");
+    if (countEl) countEl.textContent = JSON.parse(localStorage.getItem("cart") || "[]").length;
 }
 
-// ================= KHỞI ĐỘNG =================
-window.addEventListener(
-    "DOMContentLoaded",
-    () => {
-
-        cart = JSON.parse(
-            localStorage.getItem("cart")
-        ) || [];
-
-        updateCartCount();
-
-        loadProducts();
-    }
-);
+// ================== 4. KHỞI CHẠY ==================
+window.addEventListener("DOMContentLoaded", () => {
+    updateCartCount();
+    
+    // Gọi tải dữ liệu cho từng mục
+    loadProducts("denhoc", "denHocContainer");
+    loadProducts("dentrangtri", "denTrangTriContainer");
+    loadProducts("denngu", "denNguContainer");
+});

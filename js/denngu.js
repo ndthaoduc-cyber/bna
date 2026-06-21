@@ -143,4 +143,6 @@ window.addEventListener("DOMContentLoaded", () => {
     // "denngu" là tên subcollection trên Firebase
     // "denNguContainer" là ID thẻ <div> trên HTML
     loadProductsFromSubcollection("denngu", "denNguContainer"); 
+
+    
 });
