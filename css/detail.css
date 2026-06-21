@@ -1,0 +1,76 @@
+body{
+    margin:0;
+    font-family:Arial;
+    background:#f3f3f3;
+}
+
+/* layout chính */
+.container{
+    max-width:1000px;
+    margin:40px auto;
+    background:white;
+    padding:20px;
+    display:flex;
+    gap:30px;
+    border-radius:10px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* ảnh */
+.img-box{
+    flex:1;
+}
+
+.img-box img{
+    width:100%;
+    border-radius:10px;
+}
+
+/* info */
+.info{
+    flex:1;
+}
+
+.info h2{
+    font-size:26px;
+    margin-bottom:10px;
+}
+
+.price{
+    color:red;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.old-price{
+    text-decoration:line-through;
+    color:gray;
+}
+
+/* nút */
+button{
+    margin-top:20px;
+    padding:12px 20px;
+    border:none;
+    cursor:pointer;
+    border-radius:8px;
+    font-size:16px;
+}
+
+.buy{
+    background:#ff4d4d;
+    color:white;
+    margin-right:10px;
+}
+
+.cart{
+    background:#333;
+    color:white;
+}
+
+/* loading */
+.loading{
+    text-align:center;
+    margin-top:100px;
+    font-size:18px;
+}

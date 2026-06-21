@@ -1,79 +1,36 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<title>Đèn Trang Trí</title>
-<link rel="stylesheet" href="css/l.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Bán Đèn</title>
+    <link rel="stylesheet" href="css/o.css">
 </head>
-
 <body>
 
-<!-- HEADER -->
-<div class="header">
-    <div class="logo">💡 Shop Bán Đèn</div>
-    <div class="nav">
-        <a href="index.html">Trang chủ</a>
-        <a href="denngu.html">Đèn ngủ</a>
-        <a href="dentrangthi.html">Đèn trang trí</a>
-        <a href="denhoc.html">Đèn học</a>
-        <a href="giohang.html">Giỏ hàng 🛒 (<span id="cartCount">0</span>)</a>
+    <div class="header">
+        <div class="logo">💡 Shop Bán Đèn</div>
+
+        <nav class="nav">
+            <a href="index.html">Trang chủ</a>
+            <a href="denngu.html">Đèn ngủ</a>
+            <a href="denhoc.html">Đèn học</a>
+            <a href="dentrangthi.html">Đèn trang trí</a>
+            <a href="giohang.html">
+                Giỏ hàng 🛒 (<span id="cartCount">0</span>)
+            </a>
+        </nav>
     </div>
-</div>
 
-<!-- PRODUCTS -->
-<div class="products">
+    <div class="products" id="productContainer">
+        <p>Đang tải sản phẩm...</p>
+    </div>
 
-<!-- SẢN PHẨM 1 -->
-<div class="product">
-<img src="https://tse2.mm.bing.net/th/id/OIP.gll0iQhSwK6q2J2Pp0NARgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3">
-<h3>Đèn treo trang trí</h3>
-<p>236.000đ</p>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
-<button onclick="buyNow('msg1')">Mua ngay</button>
-<button onclick="addToCart('Đèn treo trang trí',220000)">Thêm vào giỏ hàng</button>
-<button onclick="window.location.href='dentrangthi1.html'">Xem thêm</button>
-
-<p id="msg1" style="color:green; display:none; font-weight:bold;">
-✔ Mua thành công
-</p>
-</div>
-
-
-<!-- SẢN PHẨM 2 -->
-<div class="product">
-<img src="https://s.alicdn.com/@sc04/kf/Hce9babcfa4da4dc0b7af49943dc2b55bw.png_300x300.jpg">
-<h3>Đèn dây LED</h3>
-<p>1.670.000đ</p>
-
-<button onclick="buyNow('msg2')">Mua ngay</button>
-<button onclick="addToCart('Đèn dây LED',180000)">Thêm vào giỏ hàng</button>
-<button onclick="window.location.href='dentrangtri2.html'">Xem thêm</button>
-
-<p id="msg2" style="color:green; display:none; font-weight:bold;">
-✔ Mua thành công
-</p>
-</div>
-
-
-<!-- SẢN PHẨM 3 -->
-<div class="product">
-<img src="https://thudoden.vn/wp-content/uploads/2024/11/2-16.png">
-<h3>Đèn trang trí bàn</h3>
-<p>1.000.000đ</p>
-
-<button onclick="buyNow('msg3')">Mua ngay</button>
-<button onclick="addToCart('Đèn trang trí bàn',200000)">Thêm vào giỏ hàng</button>
-<button onclick="window.location.href='dentrangtri3.html'">Xem thêm</button>
-
-<p id="msg3" style="color:green; display:none; font-weight:bold;">
-✔ Mua thành công
-</p>
-</div>
-
-</div>
-
-<!-- LINK JS -->
-<script src="js/dentrangtri.js"></script>
+    <script src="js/dentrangthi.js"></script>
 
 </body>
 </html>

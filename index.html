@@ -1,103 +1,52 @@
-```htm<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<title>Shop Bán Đèn</title>
-<link rel="stylesheet" href="css/index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Bán Đèn - Trang chủ</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-<div class="header">
-<div>💡 Shop Bán Đèn</div>
+    <nav class="navbar">
+        <div class="logo">💡 SHOP ĐÈN</div>
+        <div class="nav-links">
+            <a href="index.html">Trang chủ</a>
+            <a href="denngu.html">Đèn ngủ</a>
+            <a href="dentrangthi.html">Đèn trang trí</a>
+            <a href="denhoc.html">Đèn học</a>
+        </div>
+        <div class="nav-actions">
+            <a href="giohang.html">Giỏ hàng 🛒(<span id="cartCount">0</span>)</a>
+            <span id="accountArea"></span>
+        </div>
+    </nav>
 
-<div>
-<a href="index.html">Trang chủ</a>
-<a href="denngu.html">Đèn ngủ</a>
-<a href="dentrangthi.html">Đèn trang trí</a>
-<a href="denhoc.html">Đèn học</a>
+    <header class="banner">
+        <div class="banner-content">
+            <h1>Thắp sáng không gian của bạn</h1>
+            <p>Khám phá bộ sưu tập đèn hiện đại và cao cấp nhất.</p>
+            <button onclick="window.location.href='#products'">Mua ngay</button>
+        </div>
+    </header>
 
-<a href="giohang.html">
-Giỏ hàng 🛒 (<span id="cartCount">0</span>)
-</a>
+    <section class="search-trends">
+        <input type="text" id="searchInput" placeholder="Tìm kiếm đèn theo tên...">
+        <div class="trends">
+            <span>Xu hướng:</span>
+            <a href="#">Đèn học để bàn</a>
+            <a href="#">Đèn ngủ decor</a>
+            <a href="#">Đèn chùm cao cấp</a>
+        </div>
+    </section>
 
-<span id="accountArea"></span>
-</div>
-</div>
+    <main class="content" id="products">
+        <h1>Sản phẩm nổi bật</h1>
+        </main>
 
-<div class="hero">
-<div class="hero-text">
-<h1>Chào mừng đến với Shop Bán Đèn</h1>
-<p>Chuyên cung cấp đèn ngủ, đèn trang trí và đèn học chất lượng cao.</p>
-</div>
-</div>
-
-<!-- ===== SẢN PHẨM ĐỀ XUẤT ===== -->
-<h2 class="title">Sản phẩm đề xuất cho quý khách</h2>
-
-<div class="product-list">
-   <!-- sản phẩm -->
-</div>
-
-
-<div class="product-list">
-  <div class="product">
-    <img src="https://denngu.vn/uploads/thumb/dn004.jpg" width="150">
-    <h3>Đèn ngủ hiện đại</h3>
-    <p>600.000đ</p>
-    <a href="denngu2.html"><button>Xem sản phẩm</button></a>
-  </div>
-
-  <div class="product">
-    <img src="https://s.alicdn.com/@sc04/kf/Hce9babcfa4da4dc0b7af49943dc2b55bw.png_300x300.jpg" width="150">
-    <h3>Đèn trang trí</h3>
-    <p>1.000.000đ</p>
-    <a href="dentrangthi1.html"><button>Xem sản phẩm</button></a>
-  </div>
-
-  <div class="product">
-    <img src="https://netphukien.com/wp-content/uploads/den-chong-can-taotronics-ttdl056-den-hoc-chong-can-05-768x768.png" width="150">
-    <h3>Đèn học chống cận</h3>
-    <p>3.367.000đ</p>
-    <a href="denhoc3.html"><button>Xem sản phẩm</button></a>
-  </div>
-
-  <div class="product">
-    <img src="https://tamnguyenshop.com/Upload/Den-led-trang-tri/nha-thuy-tinh-den-led-dom-dom%20(9).JPG" width="150">
-    <h3>Đèn ngủ lấp lánh</h3>
-    <p>1.000.000đ</p>
-    <a href="denngu1.html"><button>Xem sản phẩm</button></a>
-  </div>
-
-  <div class="product">
-    <img src="https://thudoden.vn/wp-content/uploads/2022/10/den-ban-hien-dai-768-thu-do-den-7.jpg" width="150">
-    <h3>Đèn học</h3>
-    <p>2.500.000đ</p>
-    <a href="denhoc1.html"><button>Xem sản phẩm</button></a>
-  </div>
-</div>
-</div>
-</div>
-
-<footer class="footer">
-© 2026 Shop Bán Đèn | shopden@gmail.com
-</footer>
-
-<!-- CHAT -->
-<button id="chatToggle" onclick="toggleChat()">💬 Chat với Shop</button>
-
-<div id="chatBox">
-<div id="chatHeader">Hỗ trợ khách hàng</div>
-
-<div id="chatMessages"></div>
-
-<div id="chatInput">
-<input type="text" id="userMessage" placeholder="Nhập câu hỏi...">
-<button onclick="sendMessage()">Gửi</button>
-</div>
-</div>
-
-<script src="js/jindex.js"></script>
-
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>

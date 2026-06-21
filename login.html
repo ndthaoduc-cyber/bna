@@ -1,48 +1,47 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<title>Login / Register</title>
-
-<link rel="stylesheet" href="css/loginvaregister.css">
-
+    <meta charset="UTF-8">
+    <title>Login / Register</title>
+    <link rel="stylesheet" href="css/loginandregister.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 </head>
-
 <body>
 
-<!-- LOGIN -->
 <div class="login-box" id="loginBox">
     <h2>Đăng nhập</h2>
-
-    <input type="text" id="loginUsername" placeholder="Tên đăng nhập" autocomplete="off">
+    <input type="email" id="loginEmail" placeholder="Email" autocomplete="off">
     <input type="password" id="loginPassword" placeholder="Mật khẩu" autocomplete="new-password">
-
     <button onclick="login()">Đăng nhập</button>
-
-    <p id="loginMsg"></p>
-
-    <p>Chưa có tài khoản?
-        <a href="#" onclick="showRegister()">Đăng ký</a>
-    </p>
+    <p id="loginMsg" style="color: red;"></p>
+    <p>Chưa có tài khoản? <a href="#" onclick="toggleForm('register')">Đăng ký</a></p>
 </div>
 
-<!-- REGISTER -->
 <div class="login-box" id="registerBox" style="display:none;">
     <h2>Đăng ký</h2>
-
-    <input type="text" id="registerUsername" placeholder="Tên đăng nhập" autocomplete="off">
+    <input type="email" id="registerEmail" placeholder="Email" autocomplete="off">
     <input type="password" id="registerPassword" placeholder="Mật khẩu" autocomplete="new-password">
-
     <button onclick="register()">Đăng ký</button>
-
-    <p id="registerMsg"></p>
-
-    <p>Đã có tài khoản?
-        <a href="#" onclick="showLogin()">Đăng nhập</a>
-    </p>
+    <p id="registerMsg" style="color: red;"></p>
+    <p>Đã có tài khoản? <a href="#" onclick="toggleForm('login')">Đăng nhập</a></p>
 </div>
 
-<script src="js/login.js"></script>
+<div id="userStatus" style="margin-top: 20px; text-align: center;"></div>
+
+<script src="js/firebase.js"></script>
+<script src="js/auth.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+            const loginEmail = document.getElementById('loginEmail');
+            const loginPass = document.getElementById('loginPassword');
+            if (loginEmail) loginEmail.value = '';
+            if (loginPass) loginPass.value = '';
+        }, 50); // Đợi 50ms để đè lên trình duyệt
+    });
+</script>
 
 </body>
 </html>

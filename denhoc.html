@@ -1,79 +1,37 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<title>Đèn Học</title>
-<link rel="stylesheet" href="css/l.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Bán Đèn</title>
+    <link rel="stylesheet" href="css/o.css">
 </head>
-
 <body>
 
-<!-- HEADER -->
-<div class="header">
-    <div class="logo">💡 Shop Bán Đèn</div>
-    <div class="nav">
-        <a href="index.html">Trang chủ</a>
-        <a href="denngu.html">Đèn ngủ</a>
-        <a href="dentrangthi.html">Đèn trang trí</a>
-        <a href="denhoc.html">Đèn học</a>
-        <a href="giohang.html">Giỏ hàng 🛒 (<span id="cartCount">0</span>)</a>
+    <div class="header">
+        <div class="logo">💡 Shop Bán Đèn</div>
+
+        <nav class="nav">
+            <a href="index.html">Trang chủ</a>
+            <a href="denhoc.html">Đèn học</a>
+            <a href="denngu.html">Đèn ngủ</a>
+            <a href="giohang.html">
+                Giỏ hàng 🛒 (<span id="cartCount">0</span>)
+            </a>
+        </nav>
     </div>
-</div>
 
-<!-- PRODUCTS -->
-<div class="products">
+    <div class="main-content">
+        <h2>Đèn Học</h2>
+        <div id="denHocContainer" class="products-grid">
+            </div>
 
-<!-- SẢN PHẨM 1 -->
-<div class="product">
-<img src="https://thudoden.vn/wp-content/uploads/2022/10/den-ban-hien-dai-768-thu-do-den-7.jpg">
-<h3>Đèn học LED chống cận</h3>
-<p>150.000đ</p>
+    </div>
 
-<button onclick="buyNow('msg1')">Mua ngay</button>
-<button onclick="addToCart('Đèn học LED chống cận',150000)">Thêm vào giỏ hàng</button>
-<button onclick="window.location.href='denhoc1.html'">Xem thêm</button>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
-<p id="msg1" style="color:green; display:none; font-weight:bold;">
-✔ Mua thành công
-</p>
-</div>
-
-
-<!-- SẢN PHẨM 2 -->
-<div class="product">
-<img src="https://hpkoala.com/wp-content/uploads/2016/02/33_shop1_197145.jpg">
-<h3>Đèn học cảm ứng</h3>
-<p>220.000đ</p>
-
-<button onclick="buyNow('msg2')">Mua ngay</button>
-<button onclick="addToCart('Đèn học cảm ứng',220000)">Thêm vào giỏ hàng</button>
-<button onclick="window.location.href='denhoc2.html'">Xem thêm</button>
-
-<p id="msg2" style="color:green; display:none; font-weight:bold;">
-✔ Mua thành công
-</p>
-</div>
-
-
-<!-- SẢN PHẨM 3 -->
-<div class="product">
-<img src="https://netphukien.com/wp-content/uploads/den-chong-can-taotronics-ttdl056-den-hoc-chong-can-05-768x768.png">
-<h3>Đèn học gập thông minh</h3>
-<p>180.000đ</p>
-
-<button onclick="buyNow('msg3')">Mua ngay</button>
-<button onclick="addToCart('Đèn học gập thông minh',180000)">Thêm vào giỏ hàng</button>
-<button onclick="window.location.href='denhoc3.html'">Xem thêm</button>
-
-<p id="msg3" style="color:green; display:none; font-weight:bold;">
-✔ Mua thành công
-</p>
-</div>
-
-</div>
-
-<!-- LINK FILE JS -->
-<script src="js/denhoc.js"></script>
+    <script src="js/denhoc.js"></script>
 
 </body>
 </html>
